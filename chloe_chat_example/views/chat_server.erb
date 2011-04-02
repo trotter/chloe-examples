@@ -1,0 +1,27 @@
+var chloe = new Chloe({host: "<%= server_name %>", port: 8901});
+
+chloe.onmessage(function (data) {
+  data = $.parseJSON(data);
+  var message = $('<li><strong></strong><span></span></li>');
+  message.find('strong').text(data.name);
+  message.find('span').text(data.message);
+  message.appendTo('#messages');
+  window.scrollTo(0, document.body.scrollHeight);
+});
+
+chloe.onclose(function () {
+  console.log("Something went wrong... we've lost the connection.");
+});
+
+chloe.connect(function () {
+  $('#messages').append('<li><strong>You are connected!</strong></li>');
+  $('#chat-form').show();
+});
+
+$('#chat-form').submit(function () {
+  $message = $('#message');
+  chloe.send(JSON.stringify({name: $("#name").val(), message: $message.val()}));
+  $message.val('');
+  return false;
+});
+

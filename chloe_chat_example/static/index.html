@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <title>Ohai! Let's Chat!</title>
+  </head>
+  <body>
+    <h1>Chat time!</h1>
+
+    <ul id="messages">
+    </ul>
+
+    <form id="chat-form">
+      <label for="name">Your Name:</label>
+      <input type="text" id="name" name="name" />
+
+      <label for="message">Message:</label>
+      <input type="text" id="message" name="message" />
+
+      <input type="submit" id="submit" value="Send!" />
+    </form>
+
+    <script type="text/javascript" src="static/jquery-1.4.4.min.js"></script>
+    <script type="text/javascript" src="static/socket.io.js"></script>
+    <script type="text/javascript" src="static/chat_server.js"></script>
+  </body>
+</html>
